@@ -15,11 +15,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/{account}", produces = {"application/json"})
+//Bij value = "/{account}" kan de {} weg, dit is alleen nodig als je een account meegeeft.
 public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
     @GetMapping("/accounts")
+    //als je bij de accountController @RequestMapping("account") hebt dan kan je bij de getall -> @GetMapping("") gebruiken, dan is de default /account.
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
